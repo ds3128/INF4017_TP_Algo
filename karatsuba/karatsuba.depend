@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1664720650 source:c:\users\blaise jul\desktop\karatsuba\main.cpp
-	<iostream>
-	"karatsuba.h"
-
-1664719928 c:\users\blaise jul\desktop\karatsuba\karatsuba.h
-
