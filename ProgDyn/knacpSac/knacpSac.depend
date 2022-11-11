@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1665585395 source:d:\gitproject\inf4017_tp_algo\progdyn\knacpsac\main.cpp
+	<iostream>
+	"fonction2.h"
+
+1665513906 d:\gitproject\inf4017_tp_algo\progdyn\knacpsac\fonction2.h
+

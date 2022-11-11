@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1667031137 source:d:\gitproject\plus_blanc_carre\main.cpp
+	<iostream>
+	"fonctions.h"
+
+1666979328 d:\gitproject\plus_blanc_carre\fonctions.h
+
+1667696169 source:d:\gitproject\plus_blanc_carre\carre.cpp
+	<iostream>
+	<cstdlib>
+	<time.h>
+	"fonctions.h"
+
+1667184910 source:d:\gitproject\plus_blanc_carre\pixel.cpp
+	<iostream>
+	"fonctions.h"
+

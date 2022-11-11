@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1667530042 source:d:\gitproject\somme_max\main.cpp
+	<iostream>
+	"fonctions.h"
+
+1667497539 d:\gitproject\somme_max\fonctions.h
+

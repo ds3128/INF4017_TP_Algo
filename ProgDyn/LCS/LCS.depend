@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1665506189 source:d:\cour_d\all project about programming\projetc\lcs\main.cpp
+	<iostream>
+	"fonctions.h"
+
+1665506030 d:\cour_d\all project about programming\projetc\lcs\fonctions.h
+	<string.h>
+
+1665805732 source:d:\gitproject\inf4017_tp_algo\progdyn\lcs\main.cpp
+	<iostream>
+	"fonctions.h"
+
+1665805744 d:\gitproject\inf4017_tp_algo\progdyn\lcs\fonctions.h
+	<string.h>
+

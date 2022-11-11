@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1667839655 source:d:\gitproject\gestionprojet\main.cpp
+	<iostream>
+	<limits.h>
+	"fonction.h"
+
+1667833191 d:\gitproject\gestionprojet\fonction.h
+
