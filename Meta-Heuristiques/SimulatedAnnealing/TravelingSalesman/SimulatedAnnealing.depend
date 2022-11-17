@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1668547357 source:c:\users\blaise\documents\simulatedannealing\main.cpp
+	<iostream>
+	<time.h>
+	"fonctions.h"
+
+1668546635 c:\users\blaise\documents\simulatedannealing\fonctions.h
+
+1668652396 source:d:\gitproject\inf4017_tp_algo\meta-heuristiques\simulatedannealing\travelingsalesman\main.cpp
+	<iostream>
+	<time.h>
+	"fonctions.h"
+	<math.h>
+
+1668652165 d:\gitproject\inf4017_tp_algo\meta-heuristiques\simulatedannealing\travelingsalesman\fonctions.h
+
