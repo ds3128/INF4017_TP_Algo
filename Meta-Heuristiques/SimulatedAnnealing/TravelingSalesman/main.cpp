@@ -68,8 +68,10 @@ float p( float T, Point *x, Point *xp ){
 Point *recuitS(float T, float epsilon, Point *x){
     Point *xp;
     float r;
-    float alpha = genarateReal();
-    cout << "\n\nLe seuil de refroidissement definit est : " << alpha << endl;
+    float alpha;
+    cout << "\n\nEntrer le facteur de refroidissement >> ";
+    cin >> alpha;
+    cout << endl;
     cout << endl << "Temperature " << T << " " << toString(x) << " de distance minimale : " << f(x);
     while(T > epsilon){
         xp = voisin(x);
