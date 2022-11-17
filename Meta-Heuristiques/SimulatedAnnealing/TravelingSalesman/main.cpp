@@ -3,6 +3,7 @@
 #include "fonctions.h"
 #include <math.h>
 #define TAILLE_MAX 100
+#define LIMITE_COORD 100
 
 using namespace std;
 
@@ -21,8 +22,8 @@ int main()
     Point *x = new Point[n], *xp = new Point[n], *res;
     srand(time(NULL));
     for(int i = 0; i < n; i++){
-        x[i].x = rand() % n;
-        x[i].y = rand() % n;
+        x[i].x = rand() % LIMITE_COORD;
+        x[i].y = rand() % LIMITE_COORD;
     }
     cout << toString(x);
     xp = voisin(x);
@@ -90,15 +91,16 @@ Point *recuitS(float T, float epsilon, Point *x){
 }
 
 Point *voisin(Point *x) {
+    int mini = 1;
     Point *xp = new Point[n];
     int indiceAleatoire1 = 0, indiceAleatoire2 = 0;
     Point tmp;
-    indiceAleatoire1 = int(rand()) % n;  // Nombre aléatoire entre 0 et n
+    indiceAleatoire1 = 1 + int(rand()) % (n - mini);  // Nombre aléatoire entre 0 et n
     for(int i = 0; i < n ; i++) {
         xp[i] = x[i];
     }
     do {
-        indiceAleatoire2 = int(rand()) % n;
+        indiceAleatoire2 = 1 + int(rand()) % (n - mini);
     } while (indiceAleatoire2 == indiceAleatoire1);
     tmp = xp[indiceAleatoire1];
     xp[indiceAleatoire1] = x[indiceAleatoire2];
