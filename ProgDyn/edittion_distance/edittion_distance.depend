@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1668983353 source:d:\gitproject\edittion_distance\main.cpp
+	<iostream>
+	"edition.h"
+
+1668982748 d:\gitproject\edittion_distance\edition.h
+
