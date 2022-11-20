@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1667511108 source:d:\gitproject\texte_valide\main.cpp
+	<iostream>
+	"fonctions.h"
+
+1667508373 d:\gitproject\texte_valide\fonctions.h
+
