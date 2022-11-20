@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1668949947 source:c:\users\blaise\desktop\prim\main.cpp
+	<iostream>
+	<vector>
+	"prim.h"
+
+1668949896 c:\users\blaise\desktop\prim\prim.h
+
