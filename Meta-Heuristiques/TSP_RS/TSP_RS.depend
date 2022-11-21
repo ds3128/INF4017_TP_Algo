@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1668614142 source:c:\users\pc\downloads\prog\tsp_rs\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<math.h>
+	"fonction.h"
+
+1668614292 source:c:\users\pc\downloads\prog\tsp_rs\fonction.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<math.h>
+	"fonction.h"
+
+1668613756 c:\users\pc\downloads\prog\tsp_rs\fonction.h
+
