@@ -21,7 +21,7 @@ int main()
     cout << "Entrer la sequence Y >> ";
     cin >> Y;
 
-    C = sequences(X,Y)
+    C = sequences(X,Y);
     align = alignement(X, Y, C, "", "", X.length(), Y.length());
 
     cout << "Le score du meilleur alignement : " << score_alignement(X,Y) << endl;
@@ -70,7 +70,6 @@ int **sequences(string X, string Y){
                 S[i][j] = S[i][j-1] + score_gap;
                 C[i][j] = 2;
             }
-
 
             if(X[i-1] == Y[j-1]){
                 if(S[i][j] < S[i-1][j-1] + score_match){

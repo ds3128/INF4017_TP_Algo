@@ -6,41 +6,30 @@ using namespace std;
 int main()
 {
     int i, n, m;
-    char X[100];
-    char Y[100];
+    string X;
+    string Y;
+    string edit;
+    int **C;
 
-
-    cout << "Entrez la taille du mot X : ";
-    cin >> n;
-    cout << endl;
-
-    cout << "Entrez la taille du  mot Y : ";
-    cin >> m;
-    cout << endl;
-
-    //remplissage des elements de la suite
-    for(i = 0; i < n; i++){
-        cout << "Entrer l'element " << i+1 << " du mot X : ";
-        cin >> X[i];
-    }
+    cout << "Entrer le mot X >> ";
+    cin >> X;
 
     cout << endl;
 
-    for(i = 0; i < m; i++){
-        cout << "Entrer l'element " << i+1 << " du mot Y : ";
-        cin >> Y[i];
-    }
+    cout << "Entrer le mot Y >> ";
+    cin >> Y;
 
-    int **C = distance(X,Y,n,m);
-    std::string edit = edition(X, Y, C, "", "", n, m);
+    C = distance(X, Y);
+    edit = edition(X, Y, C, "", "", X.length(), Y.length());
 
-    cout << "Le score de la meilleure edition est : " << distance2(X,Y,n,m) << endl;
+    cout << "Le score de la meilleure edition est : " << distance2(X, Y) << endl;
     cout << "\n\nMeilleure edition : \n\n" << edit;
 
     return 0;
 }
 
-std::string edition(char X[], char Y[], int **C, std::string A, std::string B, int i, int j){
+string edition(string X, string Y, int **C, string A, string B, int i, int j)
+{
 
     if(i == 0 && j == 0){
         return B + "\n" + A;
@@ -56,38 +45,40 @@ std::string edition(char X[], char Y[], int **C, std::string A, std::string B, i
     return 0;
 }
 
-int **distance(char X[], char Y[], int n, int m){
+int **distance(string X, string Y){
 
+    int n = X.length(), m = Y.length();
     int **S = creerMatrice(n+1, m+1);
     int **C = creerMatrice(n+1, m+1);
     S[0][0] = 0;
     for(int i = 1; i < n+1; i++){ // distance qui descent
         S[i][0] = S[i-1][0] + 1;
-        C[i][0]=1;
+        C[i][0] = 1;
     }
     for(int j = 1; j < m+1; j++){ // distance qui part de la gauche vers la droite
         S[0][j] = S[0][j-1] + 1;
-        C[0][j]=2;
+        C[0][j] = 2;
     }
     for(int i = 1; i < n + 1; i++){
         for(int j = 1; j < m + 1; j++){
             S[i][j] = S[i-1][j] + 1; // distance qui descent
-            C[i][j]=1;
+            C[i][j] = 1;
 
             if(S[i][j] > S[i][j-1]){  // distance qui part de la gauche vers la droite
                 S[i][j] = S[i][j-1] + 1;
-                C[i][j]=2;
+                C[i][j] = 2;
             }
 
-            if(S[i][j] > S[i-1][j-1]){
-
-                if(X[i-1] == Y[j-1]){
+            if(X[i-1] == Y[j-1]){
+                if(S[i][j] > S[i-1][j-1] + 0){
                     S[i][j] = S[i-1][j-1] + 0;
-                    C[i][j]=3;
+                    C[i][j] = 3;
                 }
-                else {
+            }
+            else {
+                if(S[i][j] > S[i-1][j-1] + 2){
                     S[i][j] = S[i-1][j-1] + 2;
-                    C[i][j]=3;
+                    C[i][j] = 3;
                 }
             }
         }
@@ -116,15 +107,16 @@ int **distance(char X[], char Y[], int n, int m){
 
 }
 
-int distance2(char X[], char Y[], int n, int m){
+int distance2(string X, string Y){
 
+    int n = X.length(), m = Y.length();
     int **S = creerMatrice(n+1, m+1);
     int **delta = creerMatrice(n+1, m+1);
     S[0][0] = 0;
-    for(int i = 1; i < n+1; i++){ 
+    for(int i = 1; i < n+1; i++){
         S[i][0] = S[i-1][0] + 1;
     }
-    for(int j = 1; j < m+1; j++){ 
+    for(int j = 1; j < m+1; j++){
         S[0][j] = S[0][j-1] + 1;
     }
     for(int i = 1; i < n + 1; i++){

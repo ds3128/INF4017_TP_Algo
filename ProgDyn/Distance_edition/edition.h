@@ -1,10 +1,12 @@
 #ifndef EDITION_H_INCLUDED
 #define EDITION_H_INCLUDED
 
+using namespace std;
+
 int **creerMatrice(int n, int m);
-int **distance(char X[], char Y[], int n, int m);
-int distance2(char X[], char Y[], int n, int m);
-std::string edition(char X[], char Y[], int **C, std::string A, std::string B, int i, int j);
+int **distance(string X, string Y);
+int distance2(string X, string Y);
+string edition(string X, string Y, int **C, string A, string B, int i, int j);
 
 
 #endif // EDITION_H_INCLUDED
