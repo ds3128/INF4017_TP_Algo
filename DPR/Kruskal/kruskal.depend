@@ -6,10 +6,11 @@
 
 1668960042 c:\users\blaise\desktop\kruskal\kruskal.h
 
-1668983576 source:d:\gitproject\inf4017_tp_algo\dpr\kruskal\main.cpp
+1669043573 source:d:\gitproject\inf4017_tp_algo\dpr\kruskal\main.cpp
 	<iostream>
 	<vector>
 	"kruskal.h"
+	"limits.h"
 
-1668983576 d:\gitproject\inf4017_tp_algo\dpr\kruskal\kruskal.h
+1669043573 d:\gitproject\inf4017_tp_algo\dpr\kruskal\kruskal.h
 

@@ -7,23 +7,41 @@ using namespace std;
 
 int main()
 {
-    int n = 3, **mat_adj;
+    int n, **mat_adj;
     vector<Arete> arbre = {}, graphe = {};
+    cout << "Entrer le nombre de sommet du graphe d'adjacence >> ";
+    cin >> n;
     mat_adj = creerMatrice(n, n);
-    mat_adj[0][0] = INT_MAX;
-    mat_adj[0][1] = 7;
-    mat_adj[0][2] = 5;
-    mat_adj[1][0] = 7;
-    mat_adj[1][1] = INT_MAX;
-    mat_adj[1][2] = 9;
-    mat_adj[2][0] = 5;
-    mat_adj[2][1] = 9;
-    mat_adj[2][2] = INT_MAX;
+    cout << endl;
+    //remplissage de la matrice
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < i; j++){
 
-    for(int i = 1 ; i < n ; i++)
-    {
-        for(int j = 0 ; j < i ; j++)
-        {
+            cout << "Entrer le poids de l'arrete " << i+1 << " --- " << j+1 << " >> ";
+            cin >> mat_adj[i][j];
+            if(mat_adj[i][j] == -1){
+                mat_adj[i][j] = INT_MAX;
+            }
+            mat_adj[j][i] = mat_adj[i][j];
+        }
+        mat_adj[i][i] = INT_MAX;
+    }
+
+    //Affichage de la matrice
+    cout << "La matrice resultante est : " << endl;
+    for(int i = 0; i < n; i++){
+        cout << endl;
+        for(int j = 0; j < n; j++){
+            if(mat_adj[i][j] == INT_MAX){
+                cout << "\too";
+            }
+            else
+                cout << "\t" << mat_adj[i][j];
+        }
+    }
+
+    for(int i = 1 ; i < n ; i++){
+        for(int j = 0 ; j < i ; j++){
             if ( mat_adj[i][j] != INT_MAX )
                 graphe.insert(graphe.end(), {i, j, mat_adj[i][j]});
         }
@@ -33,7 +51,7 @@ int main()
     cout << endl << "L'arbre couvrant de poids minimal est l'arbre constitue des liens suivants : " << endl << endl;
     cout << endl << "N.B : La notation a --- b signifie qu'il y a une arete entre a et b." << endl << endl;
     for(int i = 0 ; i < (int)arbre.size() ; i++) {
-        cout << arbre[i].sommet1 << "\t---\t" << arbre[i].sommet2 << endl;
+        cout << arbre[i].sommet1 + 1 << "\t---\t" << arbre[i].sommet2 + 1<< endl;
     }
     cout << endl << endl << "Cet arbre couvrant est de poids : " << dmin(arbre) << endl << endl;
     return 0;
