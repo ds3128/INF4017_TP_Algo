@@ -12,7 +12,7 @@ int main()
 
     cout << endl;
 
-    cout << "\t\t########### Alignement Semi - global de Sequences ########## " << endl << endl;
+    cout << "\t\t########### Alignement Local de Sequences ########## " << endl << endl;
     cout << "Entrer la sequence X >> ";
     cin >> X;
 
@@ -29,15 +29,15 @@ int main()
     C = sequences(X,Y);
     align = alignement(X, Y, C, "", "", i, j);
 
-    cout << "Le score du meilleur alignement Semi - global : " << score << endl;
-    cout << "\n\nMeilleur alignement Semi - global : \n\n" << align;
+    cout << "Le score du meilleur alignement Local : " << score << endl;
+    cout << "\n\nMeilleur alignement Local : \n\n" << align;
 
     return 0;
 }
 
 string alignement(string X, string Y, int **C, string A, string B, int i, int j){
 
-    if(i == 0 && j == 0){
+    if( i == 0 || j == 0 || C[i][j] == 0 ){
         return B + "\n" + A;
     }
     else {
@@ -78,14 +78,18 @@ int **sequences(string X, string Y){
             if(X[i-1] == Y[j-1]){
                 if(S[i][j] < S[i-1][j-1] + score_match){
                     S[i][j] = S[i-1][j-1] + score_match;
-                    C[i][j] = 3;
+                    C[i][j] = 3; //Diagonale.
                 }
             }
             else {
                 if(S[i][j] < S[i-1][j-1] + score_missmatch){
                     S[i][j] = S[i-1][j-1] + score_missmatch;
-                    C[i][j] = 3;
+                    C[i][j] = 3; //Diagonale.
                 }
+            }
+            if(S[i][j] < 0) {
+                S[i][j] = 0;
+                C[i][j] = 0; // Sur place.
             }
         }
     }
@@ -108,7 +112,6 @@ int **sequences(string X, string Y){
     }
     cout << endl << endl;
 
-
     return C;
 
 }
@@ -119,11 +122,14 @@ int *score_alignement(string X, string Y){
     int **S = creerMatrice(n+1, m+1);
     int score_gap = -4 , score_match =4 , score_missmatch = -4;
     S[0][0] = 0;
+    indice_max[2] = 0;
     for(int i = 1; i < n+1; i++){ // gap qui descent
         S[i][0] = 0;
+        indice_max[0] = i;
     }
     for(int j = 1; j < m+1; j++){ // gap qui part de la gauche vers la droite
         S[0][j] = 0;
+        indice_max[1] = j;
     }
     for(int i = 1; i < n + 1; i++){
         for(int j = 1; j < m + 1; j++){
@@ -136,35 +142,22 @@ int *score_alignement(string X, string Y){
 
             if(X[i-1] == Y[j-1]){
                 if(S[i][j] < S[i-1][j-1] + score_match){
-                    S[i][j] = S[i-1][j-1] + score_match;
+                    S[i][j] = S[i-1][j-1] + score_match; //Diagonale.
                 }
             }
             else {
                 if(S[i][j] < S[i-1][j-1] + score_missmatch){
-                    S[i][j] = S[i-1][j-1] + score_missmatch;
+                    S[i][j] = S[i-1][j-1] + score_missmatch; //Diagonale.
                 }
             }
-        }
-    }
-
-    max_score = S[n][0];
-    indice_max[0] = n;
-    indice_max[1] = 0;
-    indice_max[2] = max_score;
-    for(int j = 1; j < m+1 ; j++) {
-        if(S[n][j] > max_score) {
-            indice_max[1] = j;
-            max_score = S[n][j];
-            indice_max[2] = max_score;
-        }
-    }
-
-    for(int i = 0; i < n ; i++) {
-        if(S[i][m] > max_score) {
-            indice_max[0] = i;
-            indice_max[1] = m;
-            max_score = S[i][m];
-            indice_max[2] = max_score;
+            if(S[i][j] < 0)
+                S[i][j] = 0; // Sur place.
+            if( S[i][j] > max_score ) {
+                max_score = S[i][j];
+                indice_max[0] = i;
+                indice_max[1] = j;
+                indice_max[2] = max_score;
+            }
         }
     }
     return indice_max;

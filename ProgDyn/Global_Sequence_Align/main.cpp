@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
     string X, Y, align;
+    int **C;
 
     cout << endl;
 
@@ -20,7 +21,7 @@ int main()
     cout << "Entrer la sequence Y >> ";
     cin >> Y;
 
-    int **C = sequences(X,Y);
+    C = sequences(X,Y)
     align = alignement(X, Y, C, "", "", X.length(), Y.length());
 
     cout << "Le score du meilleur alignement : " << score_alignement(X,Y) << endl;
