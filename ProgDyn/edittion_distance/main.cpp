@@ -34,7 +34,7 @@ int main()
     int **C = distance(X,Y,n,m);
     std::string edit = edition(X, Y, C, "", "", n, m);
 
-    cout << "Le score de la meilleure edition est : " << (edit.length()-1)/2 << endl;
+    cout << "Le score de la meilleure edition est : " << distance2(X,Y,n,m) << endl;
     cout << "\n\nMeilleure edition : \n\n" << edit;
 
     return 0;
@@ -115,6 +115,33 @@ int **distance(char X[], char Y[], int n, int m){
     return C;
 
 }
+
+int distance2(char X[], char Y[], int n, int m){
+
+    int **S = creerMatrice(n+1, m+1);
+    int **delta = creerMatrice(n+1, m+1);
+    S[0][0] = 0;
+    for(int i = 1; i < n+1; i++){ 
+        S[i][0] = S[i-1][0] + 1;
+    }
+    for(int j = 1; j < m+1; j++){ 
+        S[0][j] = S[0][j-1] + 1;
+    }
+    for(int i = 1; i < n + 1; i++){
+        for(int j = 1; j < m + 1; j++){
+
+            if(X[i-1] == Y[j-1]){
+                delta[i][j] = 0;
+            }
+            else {
+                delta[i][j] = 2;
+            }
+            S[i][j] = min(S[i-1][j-1] + 2*delta[i][j], min(S[i-1][j] + 1, S[i][j-1] + 1));
+        }
+    }
+    return S[n][m];
+}
+
 int **creerMatrice(int n, int m) {
     int **M = (int **)malloc(n*sizeof(M));
     for(int i = 0; i<n ; i++)
