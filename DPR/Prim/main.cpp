@@ -5,26 +5,47 @@
 
 using namespace std;
 
-int main()
-{
-    int n = 3, **mat_adj, *pere;
+int main(){
+
+    int n, **mat_adj, *pere;
+    cout << "Entrer le nombre de sommet du graphe   d'adjacence >> ";
+    cin >> n;
     mat_adj = creerMatrice(n, n);
-    mat_adj[0][0] = INT_MAX;
-    mat_adj[0][1] = 7;
-    mat_adj[0][2] = 5;
-    mat_adj[1][0] = 7;
-    mat_adj[1][1] = INT_MAX;
-    mat_adj[1][2] = 9;
-    mat_adj[2][0] = 5;
-    mat_adj[2][1] = 9;
-    mat_adj[2][2] = INT_MAX;
+    cout << endl;
+    //remplissage de la matrice
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < i; j++){
+
+            cout << "Entrer le poids de l'arrete " << i+1 << " --- " << j+1 << " >> ";
+            cin >> mat_adj[i][j];
+            if(mat_adj[i][j] == -1){
+                mat_adj[i][j] = INT_MAX;
+            }
+            mat_adj[j][i] = mat_adj[i][j];
+        }
+        mat_adj[i][i] = INT_MAX;
+    }
+
+    //Affichage de la matrice
+    cout << "La matrice resultante est : " << endl;
+    for(int i = 0; i < n; i++){
+        cout << endl;
+        for(int j = 0; j < n; j++){
+            if(mat_adj[i][j] == INT_MAX){
+                cout << "\too";
+            }
+            else
+                cout << "\t" << mat_adj[i][j];
+        }
+    }
     bool *visited = new bool[n];
-    for(int i = 0 ; i < n ; i++) visited[i] = false;
+    for(int i = 0 ; i < n ; i++)
+        visited[i] = false;
     pere = prim( mat_adj, n );
     cout << endl << "L'arbre couvrant de poids minimal est l'arbre constitue des liens suivants : " << endl << endl;
     cout << endl << "N.B : La notation a <--- b signifie que a est le pere de b." << endl << endl;
     for(int i = 0 ; i < n ; i++) {
-        cout << (pere[i] == -1 ? "NULL" : to_string(pere[i])) << "\t<<---\t" << i << endl;
+        cout << (pere[i] == -1 ? "NULL" : to_string(pere[i]+1)) << "\t<<---\t" << i+1 << endl;
     }
     cout << endl << "Cet arbre couvrant est de poids : " << dmin(pere , mat_adj, n ) << endl;
     return 0;
