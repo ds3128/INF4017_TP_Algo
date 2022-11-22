@@ -5,6 +5,7 @@
 using namespace std;
 
 int main()
+//Bonjour Blaise
 {
     vector<Reservation> reservations = {}, res = {}, reservations_triees = {};
     reservations.insert(reservations.begin(), {4, 5});
