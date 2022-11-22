@@ -7,7 +7,6 @@ using namespace std;
 
 int main(){
 
-	// Commentaire.
     int n, **mat_adj, *pere;
     cout << "Entrer le nombre de sommet du graphe >> ";
     cin >> n;
