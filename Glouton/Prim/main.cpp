@@ -8,7 +8,7 @@ using namespace std;
 int main(){
 
     int n, **mat_adj, *pere;
-    cout << "Entrer le nombre de sommet du graphe   d'adjacence >> ";
+    cout << "Entrer le nombre de sommet du graphe >> ";
     cin >> n;
     mat_adj = creerMatrice(n, n);
     cout << endl;

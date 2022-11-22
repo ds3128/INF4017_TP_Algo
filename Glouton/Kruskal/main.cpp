@@ -9,7 +9,7 @@ int main()
 {
     int n, **mat_adj;
     vector<Arete> arbre = {}, graphe = {};
-    cout << "Entrer le nombre de sommet du graphe d'adjacence >> ";
+    cout << "Entrer le nombre de sommets du graphe >> ";
     cin >> n;
     mat_adj = creerMatrice(n, n);
     cout << endl;
@@ -51,7 +51,7 @@ int main()
     cout << endl << "L'arbre couvrant de poids minimal est l'arbre constitue des liens suivants : " << endl << endl;
     cout << endl << "N.B : La notation a --- b signifie qu'il y a une arete entre a et b." << endl << endl;
     for(int i = 0 ; i < (int)arbre.size() ; i++) {
-        cout << arbre[i].sommet1 + 1 << "\t---\t" << arbre[i].sommet2 + 1<< endl;
+        cout << arbre[i].sommet1 + 1 << "\t---\t" << arbre[i].sommet2 + 1 << endl;
     }
     cout << endl << endl << "Cet arbre couvrant est de poids : " << dmin(arbre) << endl << endl;
     return 0;
@@ -90,9 +90,9 @@ bool cyclic( vector<Arete> arbre, Arete arete ) { // Si le graphe obtenu par ajo
 
     for(int i = 0 ; i < n ; i++)
     {
-        if (arbre[i].sommet1 == arete.sommet1 || arbre[i].sommet1 == arete.sommet2)
+        if (arete.sommet1 == arbre[i].sommet1 || arete.sommet1 == arbre[i].sommet2)
             already_used[0] = true;
-        if (arbre[i].sommet1 == arete.sommet1 || arbre[i].sommet2 == arete.sommet2)
+        if (arete.sommet2 == arbre[i].sommet1 || arete.sommet2 == arbre[i].sommet2)
             already_used[1] = true;
     }
     cycle = already_used[0] && already_used[1];

@@ -25,11 +25,9 @@ int main()
         x[i].x = rand() % LIMITE_COORD;
         x[i].y = rand() % LIMITE_COORD;
     }
-    cout << toString(x);
-    xp = voisin(x);
-    cout << endl << toString(xp);
+    cout << endl << toString(x);
     res = recuitS(temperature, epsilon, x);
-    cout << endl << "Le chemin approximatif est : " << toString(res) << " de distance minimale : " << f(res);
+    cout << endl << "Le chemin approximatif est : " << toString(res) << " de distance minimale : " << f(res) << endl;
     cout << endl;
     return 0;
 }
@@ -73,7 +71,7 @@ Point *recuitS(float T, float epsilon, Point *x){
     cout << "\n\nEntrer le facteur de refroidissement >> ";
     cin >> alpha;
     cout << endl;
-    cout << endl << "Temperature " << T << " " << toString(x) << " de distance minimale : " << f(x);
+    cout << endl << "Temperature " << T << " " << toString(x) << " de distance minimale : " << f(x) << endl;
     while(T > epsilon){
         xp = voisin(x);
         if(f(xp) < f(x)){
@@ -85,7 +83,7 @@ Point *recuitS(float T, float epsilon, Point *x){
                 x = xp;
         }
         T = g(T, alpha);
-        cout << endl << "Temperature T =  " << T << " tournee : " << toString(xp) << " de distance minimale : " << f(xp);
+        cout << endl << "Temperature T =  " << T << " tournee : " << toString(xp) << " de distance minimale : " << f(xp) << endl;
     }
     return x;
 }
